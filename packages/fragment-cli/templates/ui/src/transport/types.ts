@@ -1,7 +1,7 @@
 /**
  * {{PROJECT_NAME}} — WebviewTransport Interface
  *
- * Platform abstraction for communication between webview UI and host.
+ * Platform abstraction for webview ↔ host communication.
  * VS Code: acquireVsCodeApi()
  * Electron: window.electronAPI (via contextBridge)
  */
@@ -10,6 +10,7 @@ export interface WebviewTransport {
   postMessage(msg: unknown): void;
   getState<T>(): T | undefined;
   setState<T>(state: T): void;
+  onMessage(handler: (msg: unknown) => void): () => void;
 }
 
 let _transport: WebviewTransport | null = null;
