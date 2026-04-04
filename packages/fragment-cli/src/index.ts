@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { runInit } from './commands/init.js';
 import { runAdd } from './commands/add.js';
+import { runConnect } from './commands/connect.js';
 import { getGitAuthorName } from './utils/git.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -70,6 +71,15 @@ program
       projectDir: process.cwd(),
       templatesDir: TEMPLATES_DIR,
       surface: surface as string,
+    });
+  });
+
+program
+  .command('connect')
+  .description('Wire an AI plugin into existing Fragment surfaces')
+  .action(() => {
+    runConnect({
+      projectDir: process.cwd(),
     });
   });
 
