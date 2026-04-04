@@ -1,6 +1,44 @@
 {
-  "name": "{{PACKAGE_SCOPE}}/vscode",
+  "name": "{{PROJECT_NAME}}-vscode",
+  "displayName": "{{PROJECT_NAME}}",
+  "description": "{{PROJECT_NAME}} — Agentic Chat & Tool Timeline",
   "version": "0.0.1",
-  "private": true,
-  "description": "{{PROJECT_NAME}} VS Code extension"
+  "publisher": "{{AUTHOR_NAME}}",
+  "engines": { "vscode": "^1.95.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [{
+        "id": "{{PROJECT_NAME}}-sidebar",
+        "title": "{{PROJECT_NAME}}",
+        "icon": "$(symbol-misc)"
+      }]
+    },
+    "views": {
+      "{{PROJECT_NAME}}-sidebar": [{
+        "type": "webview",
+        "id": "{{PROJECT_NAME}}.chat",
+        "name": "Chat"
+      }]
+    },
+    "commands": [
+      { "command": "{{PROJECT_NAME}}.openTimeline", "title": "Open Tool Timeline", "category": "Fragment" },
+      { "command": "{{PROJECT_NAME}}.openWelcome", "title": "Open Welcome", "category": "Fragment" }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.mjs --production",
+    "watch": "node esbuild.mjs --watch",
+    "build:webview": "cd webview-ui && npm run build && cd ../webview-panel && npm run build"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.23"
+  }
 }
