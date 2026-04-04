@@ -1,0 +1,12 @@
+{
+  "name": "fragment-ai-scaffold",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm -w packages/fragment-cli run test",
+    "build": "npm -w packages/fragment-cli run build"
+  }
+}
