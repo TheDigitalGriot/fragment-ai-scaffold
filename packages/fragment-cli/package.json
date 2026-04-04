@@ -1,6 +1,6 @@
 {
   "name": "create-fragment",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Scaffold multi-surface AI applications with pre-wired agent connections (Electron, VS Code, TUI)",
   "author": {
@@ -30,8 +30,8 @@
     "url": "https://github.com/TheDigitalGriot/fragment-ai-scaffold/issues"
   },
   "bin": {
-    "create-fragment": "./bin/fragment.js",
-    "fragment": "./bin/fragment.js"
+    "create-fragment": "bin/fragment.js",
+    "fragment": "bin/fragment.js"
   },
   "main": "dist/index.js",
   "files": [
