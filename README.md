@@ -1,5 +1,18 @@
 # Fragment
 
+[![GitHub release](https://img.shields.io/github/v/release/TheDigitalGriot/fragment-ai-scaffold?include_prereleases&label=version)](https://github.com/TheDigitalGriot/fragment-ai-scaffold/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/typescript-5.7-blue.svg)](https://www.typescriptlang.org/)
+[![Electron](https://img.shields.io/badge/surface-Electron-47848F.svg)](https://www.electronjs.org/)
+[![VS Code](https://img.shields.io/badge/surface-VS_Code-007ACC.svg)](https://code.visualstudio.com/)
+[![TUI](https://img.shields.io/badge/surface-TUI_(Bubble_Tea)-FF6EC7.svg)](https://github.com/charmbracelet/bubbletea)
+[![Claude](https://img.shields.io/badge/agent-Claude-D97706.svg)](https://claude.ai)
+[![Codex](https://img.shields.io/badge/agent-Codex-412991.svg)](https://openai.com)
+[![Gemini](https://img.shields.io/badge/agent-Gemini-4285F4.svg)](https://deepmind.google/technologies/gemini/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/TheDigitalGriot/fragment-ai-scaffold)](https://github.com/TheDigitalGriot/fragment-ai-scaffold/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/TheDigitalGriot/fragment-ai-scaffold?style=social)](https://github.com/TheDigitalGriot/fragment-ai-scaffold)
+
 A scaffold CLI for building multi-surface AI applications. Generate a monorepo with shared core logic and UI components that deploy to Electron, VS Code, and terminal (TUI) — each wired to talk to Claude, Codex, and Gemini.
 
 ## Quick Start
