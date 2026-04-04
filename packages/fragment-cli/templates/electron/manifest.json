@@ -1,0 +1,7 @@
+{
+  "surface": "electron",
+  "files": ["**/*"],
+  "skip": ["node_modules/**"],
+  "workspaceEntry": "apps/electron",
+  "dependencies": ["core", "ui"]
+}

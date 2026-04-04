@@ -1,0 +1,7 @@
+{
+  "surface": "tui",
+  "files": ["**/*"],
+  "skip": [],
+  "workspaceEntry": null,
+  "dependencies": []
+}
