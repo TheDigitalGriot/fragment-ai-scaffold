@@ -1,38 +1,67 @@
 /**
  * {{PROJECT_NAME}} — Core Types
- *
- * Shared types consumed by all surfaces via path aliases.
- * This file is the skeleton — flesh out with your project's domain types.
+ * Shared across all surfaces via path aliases.
  */
 
-export interface AppState {
-  projectName: string;
-  version: string;
-  connectedModels: ModelConnection[];
-}
+export type ModelId = 'claude' | 'codex' | 'gemini';
+
+export type ConnectionStatus = 'connected' | 'disconnected' | 'connecting' | 'error';
+
+export type ChatViewMode = 'focused' | 'unified';
+
+export type TimelineFilter = 'all' | ModelId;
 
 export interface ModelConnection {
-  model: 'claude' | 'codex' | 'gemini';
-  status: 'connected' | 'disconnected' | 'error';
+  model: ModelId;
+  status: ConnectionStatus;
   lastActivity?: string;
+  error?: string;
 }
 
 export interface ToolCall {
   id: string;
-  model: 'claude' | 'codex' | 'gemini';
+  model: ModelId;
   tool: string;
   target: string;
   timestamp: string;
   input?: string;
   output?: string;
   duration?: number;
+  status: 'running' | 'complete' | 'error';
 }
 
 export interface ChatMessage {
   id: string;
-  model: 'claude' | 'codex' | 'gemini';
+  model: ModelId;
   role: 'user' | 'assistant';
   content: string;
   timestamp: string;
   toolCalls?: ToolCall[];
 }
+
+export interface AppState {
+  projectName: string;
+  version: string;
+  models: Record<ModelId, ModelConnection>;
+  chat: {
+    activeModel: ModelId;
+    viewMode: ChatViewMode;
+    messages: Record<ModelId, ChatMessage[]>;
+  };
+  timeline: {
+    filter: TimelineFilter;
+    entries: ToolCall[];
+  };
+}
+
+export const MODEL_COLORS: Record<ModelId, string> = {
+  claude: '#ff8c32',
+  codex: '#10b981',
+  gemini: '#3b82f6',
+};
+
+export const MODEL_LABELS: Record<ModelId, string> = {
+  claude: 'Claude',
+  codex: 'Codex',
+  gemini: 'Gemini',
+};
