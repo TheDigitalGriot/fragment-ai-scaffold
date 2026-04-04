@@ -1,7 +1,0 @@
-{
-  "name": "fragment",
-  "version": "0.0.1",
-  "description": "Fragment companion plugin — wires AI plugins into Fragment-scaffolded surfaces",
-  "author": { "name": "TheDigitalGriot" },
-  "keywords": ["fragment", "scaffold", "electron", "vscode", "tui", "agentic"]
-}
