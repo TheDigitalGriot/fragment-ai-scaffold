@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "test": "npm -w packages/fragment-cli run test",
-    "build": "npm -w packages/fragment-cli run build"
+    "build": "npm -w packages/fragment-cli run build",
+    "prepublish": "npm -w packages/fragment-cli run build"
   }
 }

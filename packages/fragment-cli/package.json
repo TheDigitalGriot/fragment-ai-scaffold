@@ -1,16 +1,49 @@
 {
-  "name": "fragment-cli",
+  "name": "create-fragment",
   "version": "0.0.1",
-  "private": true,
   "type": "module",
+  "description": "Scaffold multi-surface AI applications with pre-wired agent connections (Electron, VS Code, TUI)",
+  "author": {
+    "name": "TheDigitalGriot"
+  },
+  "license": "MIT",
+  "keywords": [
+    "create",
+    "scaffold",
+    "fragment",
+    "electron",
+    "vscode",
+    "tui",
+    "ai",
+    "claude",
+    "codex",
+    "gemini",
+    "monorepo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDigitalGriot/fragment-ai-scaffold.git",
+    "directory": "packages/fragment-cli"
+  },
+  "homepage": "https://github.com/TheDigitalGriot/fragment-ai-scaffold",
+  "bugs": {
+    "url": "https://github.com/TheDigitalGriot/fragment-ai-scaffold/issues"
+  },
   "bin": {
+    "create-fragment": "./bin/fragment.js",
     "fragment": "./bin/fragment.js"
   },
   "main": "dist/index.js",
+  "files": [
+    "bin",
+    "dist",
+    "templates"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "commander": "^13.0.0",

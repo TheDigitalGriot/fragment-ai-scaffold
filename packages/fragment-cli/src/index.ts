@@ -13,8 +13,8 @@ const TEMPLATES_DIR = join(__dirname, '..', 'templates');
 const program = new Command();
 
 program
-  .name('fragment')
-  .description('Scaffold working monorepo projects with pre-wired AI connections')
+  .name('create-fragment')
+  .description('Scaffold multi-surface AI applications with pre-wired agent connections')
   .version('0.0.1');
 
 program

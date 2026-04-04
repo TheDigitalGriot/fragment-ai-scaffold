@@ -1,6 +1,7 @@
 # Fragment
 
-[![GitHub release](https://img.shields.io/github/v/release/TheDigitalGriot/fragment-ai-scaffold?include_prereleases&label=version)](https://github.com/TheDigitalGriot/fragment-ai-scaffold/releases)
+[![npm version](https://img.shields.io/npm/v/create-fragment.svg)](https://www.npmjs.com/package/create-fragment)
+[![GitHub release](https://img.shields.io/github/v/release/TheDigitalGriot/fragment-ai-scaffold?include_prereleases&label=release)](https://github.com/TheDigitalGriot/fragment-ai-scaffold/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/typescript-5.7-blue.svg)](https://www.typescriptlang.org/)
@@ -18,9 +19,14 @@ A scaffold CLI for building multi-surface AI applications. Generate a monorepo w
 ## Quick Start
 
 ```bash
-npm install
-npx fragment init my-app --surfaces electron,vscode,tui --author "YourName"
+npm create fragment my-app -- --all
 cd my-app
+```
+
+Or with specific surfaces:
+
+```bash
+npx create-fragment init my-app --electron --vscode --tui --author "YourName"
 ```
 
 ## What You Get
@@ -49,8 +55,17 @@ Each surface ships with agent adapters for Claude, Codex, and Gemini, a chat pan
 ## CLI Commands
 
 ```bash
-fragment init <name>           # Scaffold a new project
-fragment add <surface>         # Add a surface to an existing project
+# Via npm create (recommended)
+npm create fragment my-app -- --all
+
+# Or via npx
+npx create-fragment init <name>    # Scaffold a new project
+npx create-fragment add <surface>  # Add a surface to an existing project
+
+# Or install globally
+npm i -g create-fragment
+fragment init <name>
+fragment add <surface>
 ```
 
 ## Plugin System
