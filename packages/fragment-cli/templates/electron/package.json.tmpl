@@ -1,28 +1,34 @@
 {
-  "name": "{{PACKAGE_SCOPE}}/electron",
-  "version": "0.0.1",
-  "private": true,
-  "description": "{{PROJECT_NAME}} Electron desktop app",
+  "name": "{{PROJECT_NAME}}-electron",
+  "productName": "{{PROJECT_NAME}}",
+  "version": "0.1.0",
+  "description": "{{PROJECT_NAME}} — Agentic Chat & Tool Timeline",
   "main": ".vite/build/main.js",
-  "type": "module",
+  "private": true,
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.1",
+    "@electron-forge/maker-squirrel": "^7.11.1",
+    "@electron-forge/maker-zip": "^7.11.1",
+    "@electron-forge/plugin-vite": "^7.11.1",
+    "@electron-forge/plugin-fuses": "^7.11.1",
+    "@electron/fuses": "^1.8.0",
+    "@types/electron-squirrel-startup": "^1.0.2",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "electron": "40.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^5.4.21"
+  },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.23",
-    "electron-squirrel-startup": "^1.0.1"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^7.0.0",
-    "@electron-forge/maker-squirrel": "^7.0.0",
-    "@electron-forge/maker-zip": "^7.0.0",
-    "@electron-forge/plugin-vite": "^7.0.0",
-    "@electron-forge/plugin-fuses": "^7.0.0",
-    "@electron/fuses": "^1.8.0",
-    "electron": "^34.0.0",
-    "typescript": "^5.7.0",
-    "vite": "^6.0.0"
+    "electron-squirrel-startup": "^1.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }

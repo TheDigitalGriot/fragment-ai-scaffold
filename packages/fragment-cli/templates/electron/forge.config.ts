@@ -9,23 +9,36 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
   },
-  makers: [new MakerSquirrel({}), new MakerZIP({})],
+  rebuildConfig: {},
+  makers: [
+    new MakerSquirrel({}),
+    new MakerZIP({}, ['darwin']),
+  ],
   plugins: [
     new VitePlugin({
       build: [
-        { entry: 'src/main.ts', config: 'vite.main.config.mts' },
-        { entry: 'src/preload.ts', config: 'vite.preload.config.mts' },
+        {
+          entry: 'src/main.ts',
+          config: 'vite.main.config.mts',
+          target: 'main',
+        },
+        {
+          entry: 'src/preload.ts',
+          config: 'vite.preload.config.mts',
+          target: 'preload',
+        },
       ],
       renderer: [
         {
           name: 'main_window',
-          config: 'webview-ui/vite.config.ts',
+          config: 'vite.renderer.config.mts',
         },
       ],
     }),
     new FusesPlugin({
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: false,
+      [FuseV1Options.EnableCookieEncryption]: true,
       [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
       [FuseV1Options.EnableNodeCliInspectArguments]: false,
     }),
