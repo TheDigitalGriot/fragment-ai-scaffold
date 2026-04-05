@@ -16,7 +16,7 @@ const program = new Command();
 program
   .name('create-fragment')
   .description('Scaffold multi-surface AI applications with pre-wired agent connections')
-  .version('1.0.0');
+  .version('1.0.1');
 
 program
   .command('init <name>')
