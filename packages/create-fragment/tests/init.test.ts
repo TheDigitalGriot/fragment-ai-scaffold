@@ -46,6 +46,12 @@ describe('runInit', () => {
 
     // No manifest.json in output
     expect(existsSync(join(projectDir, 'apps', 'electron', 'manifest.json'))).toBe(false);
+
+    // Prism-image plugin skeleton + meta-skills (docs-update / bookend / release)
+    expect(existsSync(join(projectDir, '.claude-plugin', 'plugin.json'))).toBe(true);
+    expect(existsSync(join(projectDir, 'skills', 'release', 'SKILL.md'))).toBe(true);
+    expect(existsSync(join(projectDir, 'skills', 'bookend', 'SKILL.md'))).toBe(true);
+    expect(existsSync(join(projectDir, 'skills', 'docs-update', 'SKILL.md'))).toBe(true);
   });
 
   it('replaces tokens in generated files', () => {

@@ -24,13 +24,10 @@ export interface PluginInfo {
 }
 
 export function discoverPlugin(projectDir: string): PluginInfo | null {
-  // Check project root: .claude-plugin/plugin.json
-  const rootManifest = join(projectDir, '.claude-plugin', 'plugin.json');
-  if (existsSync(rootManifest)) {
-    return parsePluginManifest(rootManifest, projectDir);
-  }
-
-  // Check plugins/*/.claude-plugin/plugin.json
+  // Prefer a COLOCATED AI plugin to wire (plugins/*/.claude-plugin/plugin.json)
+  // over the project's OWN root manifest. The root .claude-plugin is the
+  // scaffolded project's identity (its Prism-image skills, no MCP servers to
+  // wire); a colocated plugin is the one `fragment connect` actually wires in.
   const pluginsDir = join(projectDir, 'plugins');
   if (existsSync(pluginsDir)) {
     for (const entry of readdirSync(pluginsDir)) {
@@ -39,6 +36,12 @@ export function discoverPlugin(projectDir: string): PluginInfo | null {
         return parsePluginManifest(manifest, join(pluginsDir, entry));
       }
     }
+  }
+
+  // Fall back to the project's own root manifest.
+  const rootManifest = join(projectDir, '.claude-plugin', 'plugin.json');
+  if (existsSync(rootManifest)) {
+    return parsePluginManifest(rootManifest, projectDir);
   }
 
   return null;
