@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "npm -w packages/fragment-cli run test",
-    "build": "npm -w packages/fragment-cli run build",
-    "prepublish": "npm -w packages/fragment-cli run build"
+    "test": "npm -w packages/create-fragment run test",
+    "build": "npm -w packages/create-fragment run build",
+    "prepublish": "npm -w packages/create-fragment run build"
   }
 }
