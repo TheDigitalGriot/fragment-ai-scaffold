@@ -104,6 +104,25 @@ function registerHandlers() {
     return { success: true, message: reply };
   });
 
+  // click-to-drive: a click funnels into the SAME agent path as a typed message.
+  // `intent.content` must be a fully-formed instruction.
+  ipcMain.handle('app:drive', async (_, intent: { model?: string; content: string }) => {
+    if (intent?.model) activeModel = intent.model;
+    const content = intent.content;
+    chatMessages[activeModel].push({
+      role: 'user', model: activeModel, content,
+      timestamp: new Date().toISOString(),
+    });
+    if (activeModel === 'claude') return await handleClaudeMessage(content);
+    const reply: ChatMessage = {
+      role: 'assistant', model: activeModel,
+      content: `${activeModel} is not connected yet. Install the ${activeModel} CLI to use.`,
+      timestamp: new Date().toISOString(),
+    };
+    chatMessages[activeModel].push(reply);
+    return { success: true, message: reply };
+  });
+
   ipcMain.handle('app:debug-info', () => {
     const { cliJsPath, isCmd } = claudeCodePath ? getCliJsPath(claudeCodePath) : { cliJsPath: undefined, isCmd: false };
     return {

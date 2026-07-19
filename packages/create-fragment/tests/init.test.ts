@@ -104,6 +104,35 @@ describe('runInit', () => {
     expect(existsSync(join(projectDir, 'apps', 'tui', 'go.mod'))).toBe(true);
   });
 
+  it('creates a mobile (Expo/EAS) surface with workspace entry', () => {
+    const projectDir = join(parentDir, 'mobile-proj');
+
+    runInit({
+      name: 'mobile-proj',
+      outputDir: projectDir,
+      templatesDir: TEMPLATES_DIR,
+      surfaces: ['mobile'],
+      authorName: 'Gavin',
+      skipInstall: true,
+    });
+
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'app.config.js'))).toBe(true);
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'eas.json'))).toBe(true);
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'metro.config.js'))).toBe(true);
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'package.json'))).toBe(true);
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'app', '(tabs)', 'index.tsx'))).toBe(true);
+    // manifest.json is metadata-only — must not be emitted
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'manifest.json'))).toBe(false);
+
+    const rootPkg = JSON.parse(readFileSync(join(projectDir, 'package.json'), 'utf-8'));
+    expect(rootPkg.workspaces).toContain('apps/mobile');
+
+    // {{PACKAGE_SCOPE}} alias replaced in the .js metro config (copier .js token path)
+    const metro = readFileSync(join(projectDir, 'apps', 'mobile', 'metro.config.js'), 'utf-8');
+    expect(metro).toContain('@mobile-proj/core');
+    expect(metro).not.toContain('{{');
+  });
+
   it('supports --all flag by generating all surfaces', () => {
     const projectDir = join(parentDir, 'all-proj');
 
@@ -111,7 +140,7 @@ describe('runInit', () => {
       name: 'all-proj',
       outputDir: projectDir,
       templatesDir: TEMPLATES_DIR,
-      surfaces: ['electron', 'vscode', 'tui'],
+      surfaces: ['electron', 'vscode', 'tui', 'mobile'],
       authorName: 'Gavin',
       skipInstall: true,
     });
@@ -119,5 +148,6 @@ describe('runInit', () => {
     expect(existsSync(join(projectDir, 'apps', 'electron', 'package.json'))).toBe(true);
     expect(existsSync(join(projectDir, 'apps', 'vscode', 'package.json'))).toBe(true);
     expect(existsSync(join(projectDir, 'apps', 'tui', 'go.mod'))).toBe(true);
+    expect(existsSync(join(projectDir, 'apps', 'mobile', 'app.config.js'))).toBe(true);
   });
 });

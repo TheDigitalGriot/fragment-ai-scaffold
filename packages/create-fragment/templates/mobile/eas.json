@@ -1,0 +1,27 @@
+{
+  "cli": { "version": ">= 14.0.0", "appVersionSource": "remote" },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "env": { "APP_VARIANT": "development" },
+      "android": { "gradleCommand": ":app:assembleDebug" }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": { "APP_VARIANT": "development" }
+    },
+    "production": {
+      "channel": "production",
+      "env": { "APP_VARIANT": "production" },
+      "android": { "autoIncrement": "versionCode" }
+    },
+    "production-apk": {
+      "extends": "production",
+      "distribution": "internal",
+      "android": { "buildType": "apk" }
+    }
+  },
+  "submit": { "production": {} }
+}

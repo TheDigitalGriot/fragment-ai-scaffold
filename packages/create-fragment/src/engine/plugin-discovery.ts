@@ -64,7 +64,7 @@ export function detectSurfaces(projectDir: string): string[] {
   if (!existsSync(appsDir)) return [];
 
   const surfaces: string[] = [];
-  for (const surface of ['electron', 'vscode', 'tui']) {
+  for (const surface of ['electron', 'vscode', 'tui', 'mobile']) {
     if (existsSync(join(appsDir, surface))) {
       surfaces.push(surface);
     }

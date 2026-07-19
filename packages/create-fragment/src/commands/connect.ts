@@ -3,6 +3,7 @@ import { discoverPlugin, detectSurfaces } from '../engine/plugin-discovery.js';
 import { generateElectronGlue } from '../engine/generators/electron-glue.js';
 import { generateVSCodeGlue } from '../engine/generators/vscode-glue.js';
 import { generateTuiGlue } from '../engine/generators/tui-glue.js';
+import { generateMobileGlue } from '../engine/generators/mobile-glue.js';
 
 export interface ConnectOptions {
   projectDir: string;
@@ -45,6 +46,9 @@ export function runConnect(options: ConnectOptions): ConnectResult {
         break;
       case 'tui':
         files.tui = generateTuiGlue(surfaceDir, plugin);
+        break;
+      case 'mobile':
+        files.mobile = generateMobileGlue(surfaceDir, plugin);
         break;
     }
   }

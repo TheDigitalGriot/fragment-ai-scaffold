@@ -16,7 +16,7 @@ const program = new Command();
 program
   .name('create-fragment')
   .description('Scaffold multi-surface AI applications with pre-wired agent connections')
-  .version('1.0.1');
+  .version('1.1.0');
 
 program
   .command('init <name>')
@@ -24,20 +24,22 @@ program
   .option('--electron', 'Include Electron desktop app')
   .option('--vscode', 'Include VS Code extension')
   .option('--tui', 'Include Go Bubble Tea TUI')
+  .option('--mobile', 'Include Expo/EAS mobile app')
   .option('--all', 'Include all surfaces')
   .option('--author <name>', 'Author name (defaults to git config)')
   .action((name: string, opts: Record<string, boolean | string>) => {
     const surfaces: string[] = [];
     if (opts.all) {
-      surfaces.push('electron', 'vscode', 'tui');
+      surfaces.push('electron', 'vscode', 'tui', 'mobile');
     } else {
       if (opts.electron) surfaces.push('electron');
       if (opts.vscode) surfaces.push('vscode');
       if (opts.tui) surfaces.push('tui');
+      if (opts.mobile) surfaces.push('mobile');
     }
 
     if (surfaces.length === 0) {
-      console.error('Error: specify at least one surface (--electron, --vscode, --tui, or --all)');
+      console.error('Error: specify at least one surface (--electron, --vscode, --tui, --mobile, or --all)');
       process.exit(1);
     }
 
@@ -59,11 +61,12 @@ program
   .option('--electron', 'Add Electron desktop app')
   .option('--vscode', 'Add VS Code extension')
   .option('--tui', 'Add Go Bubble Tea TUI')
+  .option('--mobile', 'Add Expo/EAS mobile app')
   .action((opts: Record<string, boolean>) => {
-    const surface = opts.electron ? 'electron' : opts.vscode ? 'vscode' : opts.tui ? 'tui' : null;
+    const surface = opts.electron ? 'electron' : opts.vscode ? 'vscode' : opts.tui ? 'tui' : opts.mobile ? 'mobile' : null;
 
     if (!surface) {
-      console.error('Error: specify a surface to add (--electron, --vscode, or --tui)');
+      console.error('Error: specify a surface to add (--electron, --vscode, --tui, or --mobile)');
       process.exit(1);
     }
 

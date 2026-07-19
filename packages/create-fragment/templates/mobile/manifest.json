@@ -1,0 +1,7 @@
+{
+  "surface": "mobile",
+  "files": ["**/*"],
+  "skip": ["node_modules/**", ".expo/**", "ios/**", "android/**", "dist/**"],
+  "workspaceEntry": "apps/mobile",
+  "dependencies": ["core", "ui"]
+}

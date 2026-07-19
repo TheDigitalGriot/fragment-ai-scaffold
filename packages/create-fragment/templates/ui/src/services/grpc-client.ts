@@ -17,6 +17,11 @@ export class ChatServiceClient extends ProtoBusClient {
   async setViewMode(mode: ChatViewMode): Promise<{ status: string }> {
     return this.makeUnaryRequest('ChatService', 'setViewMode', { mode });
   }
+
+  /** click-to-drive: advance the session from a click (parity with a typed message). */
+  async driveIntent(intent: { model?: ModelId; content: string; source?: string }): Promise<{ status: string }> {
+    return this.makeUnaryRequest('ChatService', 'drive', intent);
+  }
 }
 
 export class TimelineServiceClient extends ProtoBusClient {

@@ -55,6 +55,14 @@ export abstract class BaseController extends EventEmitter {
       return { status: 'ok' };
     });
 
+    // click-to-drive: a click in any surface funnels into the SAME agent call as
+    // a typed message. `content` must be a fully-formed instruction.
+    registerUnary('ChatService', 'drive', async (msg) => {
+      const { model, content } = msg as { model?: ModelId; content: string };
+      this.emit('chat-message', { model: model ?? this.state.chat.activeModel, content });
+      return { status: 'ok' };
+    });
+
     registerUnary('ChatService', 'setActiveModel', async (msg) => {
       const { model } = msg as { model: ModelId };
       this.state.chat.activeModel = model;
