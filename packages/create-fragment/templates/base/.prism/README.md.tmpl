@@ -1,0 +1,16 @@
+# .prism — {{PROJECT_NAME}}
+
+This project is **Prism-aware**. The `.prism/` directory holds the structured-workflow artifacts that keep the project wired into the Prism/Griot ecosystem.
+
+Run `/prism-init` (or `python init_prism.py`) to scaffold the full structure:
+
+```
+.prism/
+├── shared/          # committed — research, plans, validation, brainstorms, designs
+│   ├── research/    # YYYY-MM-DD-topic.md
+│   ├── plans/       # YYYY-MM-DD-feature.md
+│   └── validation/  # YYYY-MM-DD-report.md
+└── local/           # gitignored — personal notes
+```
+
+See the Prism plugin for the full workflow: **research → plan → implement → validate**.

@@ -7,11 +7,19 @@ export interface McpServerConfig {
   env?: Record<string, string>;
 }
 
+export interface ChannelConfig {
+  server: string;
+}
+
 export interface PluginInfo {
   name: string;
   version?: string;
   description?: string;
   mcpServers: Record<string, McpServerConfig>;
+  channels: ChannelConfig[];
+  userConfig: Record<string, unknown>;
+  hooks: Record<string, unknown>;
+  skills: string[];
   pluginDir: string;
 }
 
@@ -43,6 +51,10 @@ function parsePluginManifest(manifestPath: string, pluginDir: string): PluginInf
     version: raw.version,
     description: raw.description,
     mcpServers: raw.mcpServers || {},
+    channels: raw.channels || [],
+    userConfig: raw.userConfig || {},
+    hooks: raw.hooks || {},
+    skills: raw.skills || [],
     pluginDir,
   };
 }
