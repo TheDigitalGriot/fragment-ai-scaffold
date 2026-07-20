@@ -27,8 +27,13 @@ Present a change summary (new sections, updated sections, pages to touch). **Wai
 - `Edit` for targeted changes; `Write` only for new pages or >80% rewrites.
 - Preserve frontmatter; add new pages to the site nav/config.
 
+## Step 4: Update the root CHANGELOG (required — most-missed surface)
+
+The docs site is not the only changelog surface. **Prepend** a Keep-a-Changelog entry for the version to the root `CHANGELOG.md` (`## [version] - YYYY-MM-DD` with `### Added` / `### Changed` / `### Fixed`), mined from `git log <last-tag>..HEAD`. It is not synced automatically and is the surface most often forgotten. Prepend only — never rewrite prior entries.
+
 ## Rules
 
 1. Always summarize + get approval before writing.
 2. Preserve frontmatter; never reformat or rewrap ASCII-art code blocks.
 3. Track progress with a todo list for updates spanning 5+ pages.
+4. ALWAYS update the root `CHANGELOG.md` for the version (Step 4) — it does not sync automatically.
