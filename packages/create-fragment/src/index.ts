@@ -25,17 +25,19 @@ program
   .option('--vscode', 'Include VS Code extension')
   .option('--tui', 'Include Go Bubble Tea TUI')
   .option('--mobile', 'Include Expo/EAS mobile app')
+  .option('--mcp', 'Include a local stdio MCP server (Python + TS, no-orphan stdio hygiene by default)')
   .option('--all', 'Include all surfaces')
   .option('--author <name>', 'Author name (defaults to git config)')
   .action((name: string, opts: Record<string, boolean | string>) => {
     const surfaces: string[] = [];
     if (opts.all) {
-      surfaces.push('electron', 'vscode', 'tui', 'mobile');
+      surfaces.push('electron', 'vscode', 'tui', 'mobile', 'mcp');
     } else {
       if (opts.electron) surfaces.push('electron');
       if (opts.vscode) surfaces.push('vscode');
       if (opts.tui) surfaces.push('tui');
       if (opts.mobile) surfaces.push('mobile');
+      if (opts.mcp) surfaces.push('mcp');
     }
 
     if (surfaces.length === 0) {
@@ -62,11 +64,12 @@ program
   .option('--vscode', 'Add VS Code extension')
   .option('--tui', 'Add Go Bubble Tea TUI')
   .option('--mobile', 'Add Expo/EAS mobile app')
+  .option('--mcp', 'Add a local stdio MCP server (Python + TS, hygiene by default)')
   .action((opts: Record<string, boolean>) => {
-    const surface = opts.electron ? 'electron' : opts.vscode ? 'vscode' : opts.tui ? 'tui' : opts.mobile ? 'mobile' : null;
+    const surface = opts.electron ? 'electron' : opts.vscode ? 'vscode' : opts.tui ? 'tui' : opts.mobile ? 'mobile' : opts.mcp ? 'mcp' : null;
 
     if (!surface) {
-      console.error('Error: specify a surface to add (--electron, --vscode, --tui, or --mobile)');
+      console.error('Error: specify a surface to add (--electron, --vscode, --tui, --mobile, or --mcp)');
       process.exit(1);
     }
 

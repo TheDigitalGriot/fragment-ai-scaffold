@@ -13,7 +13,7 @@ export interface AddOptions {
   skipInstall?: boolean;
 }
 
-const VALID_SURFACES = ['electron', 'vscode', 'tui', 'mobile'];
+const VALID_SURFACES = ['electron', 'vscode', 'tui', 'mobile', 'mcp'];
 
 export function runAdd(options: AddOptions): void {
   const { projectDir, templatesDir, surface, skipInstall } = options;

@@ -1,0 +1,7 @@
+{
+  "surface": "mcp",
+  "files": ["**/*"],
+  "skip": ["node_modules/**", ".venv/**", "__pycache__/**", "dist/**"],
+  "workspaceEntry": "apps/mcp/ts",
+  "dependencies": []
+}

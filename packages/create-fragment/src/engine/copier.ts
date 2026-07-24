@@ -6,6 +6,7 @@ const TEXT_EXTENSIONS = new Set([
   '.ts', '.tsx', '.js', '.jsx', '.json', '.md', '.css', '.html',
   '.yaml', '.yml', '.toml', '.tmpl', '.mod', '.sum', '.go',
   '.mts', '.mjs', '.env',
+  '.py', '.cfg', '.ini', '.txt', '.sh',
 ]);
 
 const SKIP_FILES = new Set(['manifest.json']);

@@ -14,7 +14,7 @@ export interface InitOptions {
   skipInstall?: boolean;
 }
 
-const VALID_SURFACES = ['electron', 'vscode', 'tui', 'mobile'];
+const VALID_SURFACES = ['electron', 'vscode', 'tui', 'mobile', 'mcp'];
 
 export function runInit(options: InitOptions): void {
   const { name, outputDir, templatesDir, surfaces, authorName, skipInstall } = options;
